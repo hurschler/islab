@@ -22,6 +22,7 @@
 		<msql-conector-java.version>8.0.16</msql-conector-java.version>
 		<spring-starter-data.version>2.1.5.RELEASE</spring-starter-data.version>
 		<log4j2.version>2.13.1</log4j2.version>
+		<modelmapper.version>2.3.5</modelmapper.version>
 	</properties>
 
 	<dependencyManagement>
@@ -58,6 +59,11 @@
 				<version>${log4j2.version}</version>
 				<scope>compile</scope>
 			</dependency>
+			<dependency>
+				<groupId>org.modelmapper</groupId>
+				<artifactId>modelmapper</artifactId>
+				<version>${modelmapper.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
@@ -93,6 +99,10 @@
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.modelmapper</groupId>
+			<artifactId>modelmapper</artifactId>
 		</dependency>
 	</dependencies>
 
