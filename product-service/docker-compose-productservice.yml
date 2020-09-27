@@ -1,0 +1,39 @@
+version: '3.2'
+
+networks:
+  backend:
+    external:
+      name: service_network
+
+services:
+  app:
+    image: product-service:latest
+    build:
+      context: ./..
+      dockerfile: ./product-service/Dockerfile
+    restart: on-failure
+    expose:
+      - "8080"
+    networks:
+      backend:
+        aliases:
+          - product-service
+
+
+  product_mysql_server:
+    image: mysql
+    container_name: product_mysql
+    restart: on-failure
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: product_database
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    networks:
+      - backend
+    volumes:
+      - productdata:/var/lib/mysql
+
+volumes:
+  productdata:
+
