@@ -1,7 +1,7 @@
 package ch.hslu.islab.productservice.controller;
 
 import ch.hslu.islab.productservice.entities.Product;
-import ch.hslu.islab.productservice.entities.ProductDto;
+import ch.hslu.islab.productservice.dtos.ProductDto;
 import ch.hslu.islab.productservice.repository.ProductRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -11,10 +11,12 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@RestController
 public class ProductController {
 
     private static final Logger logger = LogManager.getLogger(ProductController.class);
