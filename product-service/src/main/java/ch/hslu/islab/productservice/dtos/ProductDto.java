@@ -1,4 +1,4 @@
-package ch.hslu.islab.productservice.entities;
+package ch.hslu.islab.productservice.dtos;
 
 public class ProductDto {
 
