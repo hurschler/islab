@@ -8,13 +8,11 @@ import org.apache.logging.log4j.Logger;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class ProductController {
@@ -47,6 +45,43 @@ public class ProductController {
         }
         logger.info("The Size of the productDtoList is: " + productDtos.size());
         return productDtos;
+    }
+
+    @CrossOrigin(origins = "*")
+    @RequestMapping(
+            method = RequestMethod.GET,
+            path = "/products/{productId}",
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public ProductDto getProductDtoById(@PathVariable("productId") Integer productId) {
+        Optional<Product> product = productRepository.findById(productId);
+        logger.info("Get product by Id from productDb. ProductId is: " + productId);
+        logger.info(product.get());
+        return modelMapper.map(product.get(), ProductDto.class);
+    }
+
+    @CrossOrigin(origins = "*")
+    @RequestMapping(
+            method = RequestMethod.POST,
+            path = "/products",
+            produces = MediaType.APPLICATION_JSON_VALUE,
+            consumes = MediaType.APPLICATION_JSON_VALUE
+    )
+    public ProductDto saveProduct(@RequestBody ProductDto productDto){
+        Product product = modelMapper.map(productDto, Product.class);
+        Product productTemp = productRepository.save(product);
+        logger.info("Saved product on productDb. ProductId is: " + product.getProductId());
+        return modelMapper.map(productTemp, ProductDto.class);
+    }
+
+    @CrossOrigin(origins = "*")
+    @RequestMapping(
+            method = RequestMethod.DELETE,
+            path = "/products/{productId}"
+    )
+    public void deleteProduct(@PathVariable("productId") Integer productId) {
+        productRepository.deleteById(productId);
+        logger.info("Deleted product on productDb. ProductId is: " + productId);
     }
 
 }

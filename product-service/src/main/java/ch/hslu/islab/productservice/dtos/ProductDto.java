@@ -4,6 +4,7 @@ public class ProductDto {
 
     private Integer productId;
     private String description;
+    private Integer price;
 
     public Integer getProductId() {
         return productId;
@@ -19,5 +20,13 @@ public class ProductDto {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
     }
 }
