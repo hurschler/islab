@@ -1,0 +1,39 @@
+version: '3.2'
+
+networks:
+  backend:
+    external:
+      name: service_network
+
+services:
+  app:
+    image: keycloak:latest
+    build:
+      context: ./..
+      dockerfile: ./keycloak/Dockerfile
+    restart: on-failure
+    expose:
+      - "8080"
+    networks:
+      backend:
+        aliases:
+          - keycloak
+
+
+  product_mysql_server:
+    image: mysql
+    container_name: keycloak_mysql
+    restart: on-failure
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: keycloak_database
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    networks:
+      - backend
+    volumes:
+      - keycloakdata:/var/lib/mysql
+
+volumes:
+  keycloakdata:
+
