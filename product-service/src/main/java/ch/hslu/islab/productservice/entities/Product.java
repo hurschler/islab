@@ -2,7 +2,6 @@ package ch.hslu.islab.productservice.entities;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import javax.persistence.*;
 
 @Entity
@@ -13,8 +12,6 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id")
     private Integer productId;
 
     @Column
