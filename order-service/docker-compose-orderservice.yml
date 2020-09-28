@@ -1,0 +1,40 @@
+version: '3.2'
+
+networks:
+  backend:
+    external:
+      name: service_network
+
+
+services:
+  app:
+    image: order-service:latest
+    build:
+      context: ./..
+      dockerfile: ./order-service/Dockerfile
+    restart: on-failure
+    ports:
+      - 8090:8080
+    networks:
+      backend:
+        aliases:
+          - order-service
+
+
+  order_mysql_server:
+    image: mysql
+    container_name: order_mysql
+    restart: on-failure
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: order_database
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    networks:
+      - backend
+    volumes:
+      - orderdata:/var/lib/mysql
+
+volumes:
+  orderdata:
+
