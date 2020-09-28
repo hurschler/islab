@@ -2,7 +2,7 @@ FROM maven:3.6.3-jdk-11-openj9 as build
 
 LABEL maintainer='patrick.richner@stud.hslu.ch'
 
-#COPY ./pom.xml ./pom.xml
+COPY ./pom.xml ./pom.xml
 
 COPY ./product-service/pom.xml ./product-service/pom.xml
 
