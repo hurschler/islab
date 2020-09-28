@@ -5,6 +5,7 @@ networks:
     external:
       name: service_network
 
+
 services:
   app:
     image: product-service:latest
@@ -12,8 +13,8 @@ services:
       context: ./..
       dockerfile: ./product-service/Dockerfile
     restart: on-failure
-    expose:
-      - "8080"
+    ports:
+      - 8090:8080
     networks:
       backend:
         aliases:
