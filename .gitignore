@@ -24,7 +24,16 @@ hs_err_pid*
 
 
 ### IntelliJ IDEA ###
-*.idea/
+.idea
+**.idea/
 *.iws
 *.iml
 *.ipr
+Temp*
+RationalValues*
+compiler.xml
+encodings.xml
+misc.xml
+uiDesigner.xml
+vcs.xml
+workspace.xml
