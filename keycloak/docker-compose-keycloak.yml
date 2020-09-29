@@ -6,27 +6,38 @@ networks:
       name: service_network
 
 services:
-  app:
-    image: keycloak:latest
-    build:
-      context: ./..
-      dockerfile: ./keycloak/Dockerfile
+  keycloak_server:
+    image: jboss/keycloak:latest
+    container_name: keycloak
     restart: on-failure
+    ports:      
+      - '8085:8080'
     expose:
-      - "8080"
+      - "8085"
+    environment:
+      # KEYCLOAK_PASSWORD: password
+      # KEYCLOAK_USER: root
+      DB_VENDOR: MYSQL
+      DB_ADDR: keycloak_mysql_server
+      DB_PORT: 3306
+      DB_DATABASE: keycloak
+      DB_USER: root
+      DB_PASSWORD: password      
     networks:
       backend:
         aliases:
           - keycloak
 
 
-  product_mysql_server:
+  keycloak_mysql_server:
     image: mysql
     container_name: keycloak_mysql
     restart: on-failure
+    ports:      
+      - '3306:3306'
     environment:
       MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: keycloak_database
+      MYSQL_DATABASE: keycloak
       MYSQL_USER: user
       MYSQL_PASSWORD: password
     networks:
