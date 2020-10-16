@@ -25,6 +25,8 @@ services:
     image: mysql
     container_name: product_mysql
     restart: on-failure
+    ports:
+    - '3310:3306'
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: product_database
