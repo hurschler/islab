@@ -14,7 +14,7 @@ services:
       dockerfile: ./product-service/Dockerfile
     restart: on-failure
     ports:
-      - 8090:8080
+      - 8090:8090
     networks:
       backend:
         aliases:
