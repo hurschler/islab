@@ -26,3 +26,6 @@ Im Host-File sind folgende EintrÃ¤ge zu machen:
 127.0.0.1       product-service
 
 
+URL für den Zugriff
+http://product-service:8090/customers
+
