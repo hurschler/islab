@@ -22,6 +22,7 @@ target/
 ### Eclipse ###
 .project
 .classpath
+.settings
 
 ### NetBeans ###
 /nbproject/private/
