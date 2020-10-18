@@ -32,6 +32,10 @@ uiDesigner.xml
 vcs.xml
 workspace.xml
 
+### Eclipse ###
+.project
+.classpath
+
 # User-specific stuff:
 .idea/workspace.xml
 .idea/tasks.xml
