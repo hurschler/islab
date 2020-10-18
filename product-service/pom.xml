@@ -7,7 +7,6 @@
 		<artifactId>keycloack</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>ch.hslu.islab</groupId>
 	<artifactId>product-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>product-service</name>
@@ -87,22 +86,18 @@
 			<artifactId>spring-rabbit-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        </dependency>		
-		
+        </dependency>
 		<dependency>
     		<groupId>org.keycloak</groupId>
     		<artifactId>keycloak-spring-boot-starter</artifactId>
 		</dependency>
-		
 		<dependency>
 		    <groupId>org.springframework.boot</groupId>
     		<artifactId>spring-boot-starter-security</artifactId>
-    	</dependency>		
-		
+    	</dependency>
 	</dependencies>
 
 	<build>
