@@ -53,7 +53,7 @@ public class WebController {
     if (principal != null) {
       model.addAttribute("username", principal.getName());
     }
-    logger.info("Gett all products" + products);
+    logger.info("Get all products" + products);
     return "products";
   }
 
