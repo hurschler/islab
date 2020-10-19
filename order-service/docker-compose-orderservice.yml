@@ -14,7 +14,7 @@ services:
       dockerfile: ./order-service/Dockerfile
     restart: on-failure
     ports:
-      - 8090:8080
+      - 8091:8091
     networks:
       backend:
         aliases:
@@ -25,6 +25,8 @@ services:
     image: mysql
     container_name: order_mysql
     restart: on-failure
+    ports:
+      - '3320:3306'
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: order_database
