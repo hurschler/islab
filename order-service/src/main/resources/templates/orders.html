@@ -1,0 +1,40 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html
+				xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:th="http://www.thymeleaf.org"
+				lang="en"
+>
+	<head th:include="layout :: headerFragment">
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>Bestell Service</title>
+	</head>
+	<body>
+		<div id="container" style="margin: 50px">
+			<h1>
+				Bestell Service intern
+			</h1>
+			<h3>Benutzer <!--/*@thymesVar id="username" type="java"*/-->
+			<span th:text="${username}">--name--</span></h3>
+			<h3>
+				Products
+			</h3>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Produkt ID</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="order : ${orders}">
+						<td th:text="${order.orderId}">Text ...</td>
+						<td th:text="${order.productId}">Text ...</td>
+					</tr>
+				</tbody>
+			</table>
+			<div id="pagefoot" th:include="layout :: footerFragment">Footer</div>
+		</div>
+	<!-- container -->
+	</body>
+</html>
